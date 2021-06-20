@@ -746,6 +746,7 @@
           <object class="GtkButton" id="open_button">
             <property name="visible">True</property>
             <property name="can_focus">True</property>
+            <property name="margin-left">5</property>
             <property name="label">Open</property>
             <property name="action_name">view.chooserselect</property>
             <style>
@@ -755,8 +756,8 @@
           <packing>
             <property name="expand">False</property>
             <property name="fill">True</property>
+            <property name="pack-type">end</property>
             <property name="position">4</property>
-            <property name="padding">5</property>
           </packing>
         </child>
       </object>
