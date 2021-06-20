@@ -1725,6 +1725,14 @@ action_chooserselect (GSimpleAction *action,
 }
 
 static void
+action_choosercancel (GSimpleAction *action,
+                      GVariant      *state,
+                      gpointer       user_data)
+{
+  exit (0);
+}
+
+static void
 pattern_select_response_cb (GtkWidget *dialog,
                             int        response,
                             gpointer   user_data)
@@ -7229,6 +7237,7 @@ const GActionEntry view_entries[] =
     { "invert-selection", action_invert_selection },
     /* File Chooser Mode */
     { "chooserselect", action_chooserselect },
+    { "choosercancel", action_choosercancel }
 };
 
 static gboolean
