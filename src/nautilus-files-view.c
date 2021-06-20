@@ -1704,6 +1704,27 @@ action_invert_selection (GSimpleAction *action,
 }
 
 static void
+action_chooserselect (GSimpleAction *action,
+                      GVariant      *state,
+                      gpointer      user_data)
+{
+  guint i;
+  GList *selection;
+
+  g_assert (NAUTILUS_IS_FILES_VIEW (user_data));
+  selection = nautilus_files_view_get_selection (user_data);
+
+  for (i = 0; i < g_list_length (selection); i++)
+    {
+      gpointer element_data = g_list_nth_data (selection, i);
+
+      char *uri = nautilus_file_get_uri( element_data );
+      g_print ("%s", uri);
+      exit (0);
+    }
+}
+
+static void
 pattern_select_response_cb (GtkWidget *dialog,
                             int        response,
                             gpointer   user_data)
@@ -7206,6 +7227,8 @@ const GActionEntry view_entries[] =
     /* Only accesible by shorcuts */
     { "select-pattern", action_select_pattern },
     { "invert-selection", action_invert_selection },
+    /* File Chooser Mode */
+    { "chooserselect", action_chooserselect },
 };
 
 static gboolean
